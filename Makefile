@@ -51,44 +51,6 @@ clean:
 	rm -f *.o swetest libswe*
 
 
-
-
-out/linux/x64:
-	mkdir -p out/linux/x64
-
-out/linux/x64/native_functions.o: native_functions.c | out/linux/x64
-	$(CC) $(CFLAGS) -c -o $@ native_functions.c
-
-out/linux/x64/libnative_functions.so: out/linux/x64/native_functions.o
-	$(CC) $(CFLAGS) -s -shared -o $@ out/linux/x64/native_functions.o
-
-out/linux/ia32:
-	mkdir -p out/linux/ia32
-
-out/linux/ia32/native_functions.o: native_functions.c | out/linux/ia32
-	$(CC) $(CFLAGS) -m32 -c -o $@ native_functions.c
-
-out/linux/ia32/libnative_functions.so: out/linux/ia32/native_functions.o
-	$(CC) $(CFLAGS) -m32 -s -shared -o $@ out/linux/ia32/native_functions.o
-
-out/linux/arm64:
-	mkdir -p out/linux/arm64
-
-out/linux/arm64/native_functions.o: native_functions.c | out/linux/arm64
-	$(CCARM64) $(CFLAGS) -c -o $@ native_functions.c
-
-out/linux/arm64/libnative_functions.so: out/linux/arm64/native_functions.o
-	$(CCARM64) $(CFLAGS) -s -shared -o $@ out/linux/arm64/native_functions.o
-
-out/linux/arm:
-	mkdir -p out/linux/arm
-
-out/linux/arm/native_functions.o: native_functions.c | out/linux/arm
-	$(CCARM) $(CFLAGS) -c -o $@ native_functions.c
-
-out/linux/arm/libnative_functions.so: out/linux/arm/native_functions.o
-	$(CCARM) $(CFLAGS) -s -shared -o $@ out/linux/arm/native_functions.o
-
 	
 ###
 swecl.o: swejpl.h sweodef.h swephexp.h swedll.h sweph.h swephlib.h
